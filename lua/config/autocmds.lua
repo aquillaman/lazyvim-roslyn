@@ -17,3 +17,11 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.cindent = true
   end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function()
+    vim.schedule(function()
+      vim.diagnostic.config({ virtual_text = false })
+    end)
+  end,
+})
